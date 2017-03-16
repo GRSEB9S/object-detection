@@ -2,5 +2,7 @@
 Fast Multi-spectral Human Detection with Deep Fusion Neural Networks
 
 
-# SSD for Indoor Human Detection
+# SSD for Indoor Human Detection - RGB
 [video](https://www.youtube.com/watch?v=qd9Pg_OnXE8&list=PLNvtbiegTyf_eKmU40zCeukKe7HhUNcyS&index=1)
+
+# SSD for Outdoor Human Detection - TIR
