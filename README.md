@@ -10,7 +10,7 @@ Fast Multi-spectral Human Detection with Deep Fusion Neural Networks
 | SqueezeNet    | 25                      |          ?     |            ?            |
 | Resnet-18     | 45                      |           ?    |             ?           |
 
-*all test were performed for [this](https://www.youtube.com/watch?v=qd9Pg_OnXE8&list=PLNvtbiegTyf_eKmU40zCeukKe7HhUNcyS&index=1) video
+*all test were performed for [this](https://www.youtube.com/watch?v=h0qhZK0eGZY) video
 
 
 # SSD for Outdoor Human Detection - TIR
