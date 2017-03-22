@@ -1,6 +1,3 @@
-### Description 
-
-
 ### SSD for Indoor Human Detection - RGB
 
 | Base Network  | FPS(Titan X) | Raspberry PI Model 3B | Model Size (MB)|
@@ -18,8 +15,8 @@
 | --------------------------------- | ----- | ----- | ---   | ------- | --------- | ----- | --------- | 
 |CaffeNet                           | ----- | ----- | ---   |-------|---------|-----  |---------|      
 |SqueezeNet                         | ----- | ----- | ---   |-------|---------|-----  |---------|       
-|[Resnet-18](https://goo.gl/rVnQLx) | 74.39 | 81.09 | 77.22 | 76.72 | 79.12 | 77.73 | 70.18 | 60.72 |
+|[Resnet-18]                        | 74.39 | 81.09 | 77.22 | 76.72 | 79.12 | 77.73 | 70.18 | 60.72 |
 |VGG16_red                          | ----- | ----- | ----- |-------|---------|-----  |---------|       
 
-*you can download weights via link in network name
+*you can download weights via this [link](https://goo.gl/Uwyom7) 
 
