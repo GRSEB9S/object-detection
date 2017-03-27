@@ -1,5 +1,3 @@
-### SSD for Indoor Human Detection - RGB
-
 | Base Network  | FPS(Titan X) | Raspberry PI Model 3B | Model Size (MB)|
 | ------------- | ------------ | --------------------- | -------------- | 
 | CaffeNet      | 45           |                       |                |
@@ -7,9 +5,6 @@
 | Resnet-18     | 45           |                       |                |
 
 *all tests were performed for [this](https://www.youtube.com/watch?v=h0qhZK0eGZY) video
-
-
-##### Evaluations results for PASCAL VOC 2007 test set
 
 |Base Network                       | Person | Car  | Bus | Bicycle | Motorbike | Train | Aeroplane |
 | --------------------------------- | ----- | ----- | ----- | ----- | ----- | ----- | ------| 
