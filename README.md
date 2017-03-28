@@ -11,7 +11,7 @@
 ### Introduction
 
 
-Current state-of-the-art object detection algorythms produce very nice results for images with good light condition and almost useless during night time. The main idea of this work utilize information from thermal infrared sensors and RGB camera to avoid such illumination problems. 
+Current state-of-the-art object detection algorithms produce very nice results for images with good light condition and almost useless during night time. The main idea of this work utilize information from thermal infrared sensors and RGB camera to avoid such illumination problems. 
 
 ------
 ### Results
