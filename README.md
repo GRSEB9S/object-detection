@@ -1,3 +1,5 @@
+## Fast Multispectral Deep Fusion Networks for Human Detection
+------
 ### Table of Contents
 1. [Introduction](#introduction)
 2. [Datasets](#datasets)
