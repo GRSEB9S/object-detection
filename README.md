@@ -26,12 +26,14 @@ Also, it is hard to launch complex deep neural networks on embedded deivices wit
 
 ### Results
 
-| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K  | Raspberry PI Model 3B| Model Size (MB)|
+| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K (FPS)  | Raspberry PI Model 3B (single image detectionin seconds)| Model Size (MB)|
 | ------------- | :----------: | :-------------------: | :------------: | :--:  |
-| CaffeNet      | 80           |      3.5              |                | 26.1  |
-| SqueezeNet    | 85           |      4.2              |                |       |
-| Resnet-18     | 74           |      0.1              |                | 58.6  |
-| VGG16_reduced | --           |                       |                | 104.3 |
+| CaffeNet      | 80           |      3.5              |    2.8564      | 26.1  |
+| SqueezeNet    | 85           |      4.2              |    1.9142      |       |
+| Resnet-18     | 74           |      0.1              |    7.5         | 58.6  |
+| VGG16_reduced | --           |                       |    54.76       | 104.3 |
+
+
 
 *all tests were performed for [this](https://www.youtube.com/watch?v=h0qhZK0eGZY) video
 
