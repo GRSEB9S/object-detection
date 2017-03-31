@@ -23,11 +23,14 @@ Summarize all
 
 ### Datasets
 
+#### PASCAL VOC
+#### Caltech Pedestrian Dataset
+
 #### [PIROPO](https://sites.google.com/site/piropodatabase/)
 
 The PIROPO database (People in Indoor ROoms with Perspective and Omnidirectional cameras) comprises multiple sequences recorded in two different indoor rooms, using both omnidirectional and perspective cameras. The sequences contain people in a variety of situations, including people walking, standing, and sitting. Both annotated and non-annotated sequences are provided, where ground truth is point-based (each person in the scene is represented by the point located in the center of its head). In total, more than 100,000 annotated frames are available.
 
-#### [KAIST](https://sites.google.com/site/pedestrianbenchmark/)
+#### [KAIST Multispectral Pedestrian Dataset](https://sites.google.com/site/pedestrianbenchmark/)
 
 KAIST developed imaging hardware consisting of a color camera, a thermal camera and a beam splitter to capture the aligned multispectral (RGB color + Thermal) images. With this hardware, they captured various regular traffic scenes at day and night time to consider changes in light conditions.The KAIST Multispectral Pedestrian Dataset consists of 95k color-thermal pairs (640x480, 20Hz) taken from a vehicle. All the pairs are manually annotated (person, people, cyclist) for the total of 103,128 dense annotations and 1,182 unique pedestrians. The annotation includes temporal correspondence between bounding boxes like Caltech Pedestrian Dataset. More infomation can be found in [CVPR 2015 paper](https://goo.gl/ZF9v6r).
 
@@ -60,7 +63,7 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 
 ### Thermal SSD
 
-
+------
 ### Fusion results (in development)
 
 | Base Network  | Sum Fusion   | Convolution Fusion    |
@@ -68,6 +71,7 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 | Resnet-18     |     --       |      --              |  
 
 
+------
 
 ### Installation 
 
