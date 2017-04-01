@@ -39,14 +39,14 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 ### Detection results
 
 #### Table 1. Performance results 
-| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K (FPS)  | Raspberry PI 3 (sec for 1 img)| Model Size (MB)|
-| ------------- | :----------: | :-------------------: | :------------: | :--:  |
-| CaffeNet      | 80           |      3.5              |    2.8564      | 26.1  |
-| SqueezeNet    | 85           |      4.2              |    1.9142      |       |
-| Resnet-18     | 74           |      0.1              |    7.5         | 58.6  |
-| VGG16_reduced | --           |                       |    54.76       | 104.3 |
+| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K | Raspberry PI 3 | Model Size (MB)|
+| ------------- | :----------: | :-------------------: | :----------: | :--:  |
+| CaffeNet      | 45           |      0.28             |    2.86      | 26.1  |
+| SqueezeNet    | 130          |      0.57             |    1.92      | 17.8  |
+| Resnet-18     | 77           |      0.76             |    7.49      | 58.6  |
+| VGG16_reduced | 47           |      3.2              |    54.76     | 104.3 |
 
-*demo video with resnet-18 results [here](https://www.youtube.com/watch?v=h0qhZK0eGZY) 
+*demo video with fps test of resnet-18 [here](https://www.youtube.com/watch?v=h0qhZK0eGZY) 
 
 
 #### Table 2. Detection results for various base networks
@@ -54,7 +54,7 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 | --------------------------------- | :----: | :--: | :---: | :---: | :---: | :---: | :---: | :---: |
 |CaffeNet                           | 48.06 | 54.62 | 56.49 | 53.64 | 54.93 | 57.12 | 47.83 | 41.40 |
 |SqueezeNet                         | 55.11 | 55.52 | 65.91 | 58.21 | 61.40 | 68.60 | 55.46 | 49.55 |
-|Resnet-18                          | 72.81 | 79.32 | 73.47 | 76.31 | 75.81 | 75.40 | 65.22 | 65.15 |
+|Resnet-18                          | 72.23 | 79.07 | 74.98 | 77.89 | 79.43 | 79.24 | 70.98 | 67.15 |
 |VGG16_reduced-mxnet **original model** | 74.39 | 81.77 | 77.91 | 79.69 | 77.06 | 84.01 | 72.15 | 71.57 |
 
 *you can download weights via this [link](https://goo.gl/Uwyom7) 
