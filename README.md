@@ -41,10 +41,10 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 #### Table 1. Performance results 
 | Base Network  | GPU Titan X (FPS)  | CPU I7-5820K | Raspberry PI 3 | Model Size (MB)|
 | ------------- | :----------: | :-------------------: | :---------: | :--:  |
-| CaffeNet      | 102          |      0.39             |    ?        | 26.1  |
-| SqueezeNet    | 138          |      0.19             |    ?        | 17.8  |
-| Resnet-18     | 79           |      0.71             |    7.5      | 58.6  |
-| VGG16_reduced | 45           |      3.2              |    54.8     | 104.3 |
+| CaffeNet      | 102          |      0.39             |    2.6      | 26.1  |
+| SqueezeNet    | 138          |      0.19             |    1.7      | 17.8  |
+| Resnet-18     | 79           |      0.71             |    7.3      | 58.6  |
+| VGG16_reduced | 45           |      3.2              |    55.6     | 104.3 |
 
 *demo video with fps test of resnet-18 [here](https://www.youtube.com/watch?v=h0qhZK0eGZY) 
 
