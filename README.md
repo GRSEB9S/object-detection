@@ -20,7 +20,8 @@ Also, it is hard to launch complex deep neural networks on embedded deivices wit
 ### Datasets
 
 #### PASCAL VOC
-
+todo:
+add short description 
 
 #### [KAIST Multispectral Pedestrian Dataset](https://sites.google.com/site/pedestrianbenchmark/)
 
@@ -28,15 +29,20 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 
 ### Detection 
 
-#### Fig 1. Training/Validation curves
+#### Fig 1. Validation overall accuracy (including background prediction)
+![alt tag](https://github.com/osin-vladimir/ms-thesis-skoltech/blob/master/notebooks/img/overall%20accuracy.png)
 
+#### Fig 2. Validation object accuracy (only foreground object predictions)
+![alt tag](https://github.com/osin-vladimir/ms-thesis-skoltech/blob/master/notebooks/img/object%20accuracy.png)
 
+#### Fig 3. Validation smooth L1 loss 
+![alt tag](https://github.com/osin-vladimir/ms-thesis-skoltech/blob/master/notebooks/img/smooth%20l1%20loss.png)
 
 #### Table 1. Performance results 
 | Base Network  | GPU Titan X (FPS)  | CPU I7-5820K | Raspberry PI 3 | Model Size (MB)|
 | ------------- | :----------: | :-------------------: | :---------: | :--:  |
-| CaffeNet      | 90           |      0.41             |    ?        | 26.1  |
-| SqueezeNet    | 140          |      0.26             |    ?        | 17.8  |
+| CaffeNet      | 102          |      0.39             |    ?        | 26.1  |
+| SqueezeNet    | 138          |      0.19             |    ?        | 17.8  |
 | Resnet-18     | 79           |      0.71             |    7.5      | 58.6  |
 | VGG16_reduced | 45           |      3.2              |    54.8     | 104.3 |
 
