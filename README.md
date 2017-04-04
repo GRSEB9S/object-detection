@@ -46,7 +46,7 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 | Resnet-18     | 79           |      0.71             |    7.3      | 58.6  |
 | VGG16_reduced | 45           |      3.2              |    55.6     | 104.3 |
 
-*demo video with fps test of resnet-18 [here](https://www.youtube.com/watch?v=h0qhZK0eGZY) 
+*demo video with fps test of resnet-18 [here](https://www.youtube.com/watch?v=QvC_bejEtzY) 
 
 #### Table 2. Detection results for various base networks
 |Base Network                       | Person | Car  | Bus | Bicycle | Motorbike | Train | Aeroplane | mAP |
