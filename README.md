@@ -9,9 +9,8 @@
 ------
 
 ### Table of Contents
-3. [Detection](#detection)
-4. [Installation](#installation)
-5. [References](#references)
+1. [Detection](#detection)
+2. [References](#references)
 
 ------
 
@@ -47,11 +46,6 @@
 *you can download weights via this [link](https://goo.gl/Uwyom7) 
 
 ------
-
-
-### Installation 
-...
-
 
 ### References 
 [CVPR 2015 paper](https://goo.gl/ZF9v6r)
