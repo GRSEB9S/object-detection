@@ -1,31 +1,19 @@
 ## Fast Multispectral Deep Fusion Networks for Human Detection
 
+### TO-DO
+0. Add fusion model description 
+0. Add table for KAIST dataset
+0. Add description for PASCAL VOC
+0. Update to new mxnet version
+
+------
+
 ### Table of Contents
-1. [Introduction](#introduction)
-2. [Contribution](#contribution)
-3. [Datasets](#datasets)
-4. [Detection results](#detection_results)
-5. [Installation](#installation)
+3. [Detection](#detection)
+4. [Installation](#installation)
+5. [References](#references)
 
 ------
-### Introduction
-
-Current state-of-the-art object detection algorithms produce very nice results for images with good light condition and almost useless during night time. The main idea of this work utilize information from thermal infrared sensors and RGB camera to avoid such illumination problems.
-Also, it is hard to launch complex deep neural networks on embedded deivices with near real-time performance... 
-
-------
-### Contribution
-------
-
-### Datasets
-
-#### PASCAL VOC
-todo:
-add short description 
-
-#### [KAIST Multispectral Pedestrian Dataset](https://sites.google.com/site/pedestrianbenchmark/)
-
-KAIST developed imaging hardware consisting of a color camera, a thermal camera and a beam splitter to capture the aligned multispectral (RGB color + Thermal) images. With this hardware, they captured various regular traffic scenes at day and night time to consider changes in light conditions.The KAIST Multispectral Pedestrian Dataset consists of 95k color-thermal pairs (640x480, 20Hz) taken from a vehicle. All the pairs are manually annotated (person, people, cyclist) for the total of 103,128 dense annotations and 1,182 unique pedestrians. The annotation includes temporal correspondence between bounding boxes like Caltech Pedestrian Dataset. More infomation can be found in [CVPR 2015 paper](https://goo.gl/ZF9v6r).
 
 ### Detection 
 
@@ -60,19 +48,10 @@ KAIST developed imaging hardware consisting of a color camera, a thermal camera 
 
 ------
 
-### Thermal SSD
-
-#### FPPI graph 
-#### miss rate
-
-------
-### Fusion results (in development)
-
-| Base Network  | Sum Fusion   | Convolution Fusion    |
-| ------------- | :----------: | :-------------------: | 
-| Resnet-18     |     --       |      --               | 
-
-------
 
 ### Installation 
 ...
+
+
+### References 
+[CVPR 2015 paper](https://goo.gl/ZF9v6r)
