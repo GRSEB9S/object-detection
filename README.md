@@ -2,10 +2,6 @@
 
 ### TO-DO
 0. Add fusion model description 
-0. Add table for KAIST dataset
-0. Add description for PASCAL VOC
-0. Update to new mxnet version
-
 ------
 
 ### Table of Contents
@@ -46,6 +42,22 @@
 *you can download weights via this [link](https://goo.gl/Uwyom7) 
 
 ------
+#### Datasets
+For Single Shot Multibox Detector training/testing procedures I used PASCAL VOC 07/12 datasets.
+For training/testing procedures of multispectral model I used reasonable subsets of Caltech Pedestrian Detector and KAIST Multispectral Dataset.
 
+Links: [pascal](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html), [caltech](https://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/), [kaist](https://sites.google.com/site/pedestrianbenchmark/)
+
+------
 ### References 
-[CVPR 2015 paper](https://goo.gl/ZF9v6r)
+1. [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)
+2. [Multispectral Pedestrian Detection: Benchmark Dataset and Baseline](https://goo.gl/ZF9v6r)
+3. [Pedestrian Detection:An Evaluation of the State of the Art](https://goo.gl/oMjBFq)
+
+------
+### Github repositories
+1. [SSD: Single Shot MultiBox Detector](https://github.com/weiliu89/caffe/tree/ssd)
+2. [Joshua Z. Zhang implementation of SSD for MXnet](https://github.com/zhreshold/mxnet-ssd)
+
+
+
