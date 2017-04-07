@@ -81,6 +81,6 @@ def squeezenet():
     fire9_relu_expand3x3 = mx.symbol.Activation(name='fire9_relu_expand3x3', data=fire9_expand3x3, act_type='relu')
     fire9_concat = mx.symbol.Concat(name='fire9_concat', *[fire9_relu_expand1x1, fire9_relu_expand3x3]) #17x17
 
-    return [None, None, fire9_concat]
+    return [fire5_concat, fire9_concat, fire9_concat]
 
 

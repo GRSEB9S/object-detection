@@ -3,9 +3,9 @@ import numpy as np
 
 def bn_act_conv_layer(from_layer, name, num_filter, kernel=(1,1), pad=(0,0), stride=(1,1)):
     bn = mx.symbol.BatchNorm(data=from_layer, name="bn{}".format(name))
-    elu = mx.symbol.LeakyReLU(data=bn, act_type='elu')
-    conv = mx.symbol.Convolution(data=elu, kernel=kernel, pad=pad, stride=stride, num_filter=num_filter, name="conv{}".format(name))
-    return conv, elu
+    relu = mx.symbol.Activation(data=bn, act_type='relu')
+    conv = mx.symbol.Convolution(data=relu, kernel=kernel, pad=pad, stride=stride, num_filter=num_filter, name="conv{}".format(name))
+    return conv, relu
 
 
 def conv_act_layer(from_layer, name, num_filter, kernel=(1,1), pad=(0,0), \
@@ -117,15 +117,8 @@ def multibox_layer(from_layers, num_classes, sizes=[.2, .95], ratios=[1], normal
         from_name = from_layer.name
         # normalize
         if normalization[k] > 0:
-            from_layer = mx.symbol.L2Normalization(data=from_layer, \
-                mode="channel", name="{}_norm".format(from_name))
-            # from_layer = mx.symbol.NaiveScale(data=from_layer, mode="spatial", \
-            #     name="{}_scale_{}".format(from_name, normalization[k]))
-            # scale = mx.symbol.InferedVariable(data=from_layer, shape=(1, 0, 1, 1),
-            #     suffix="{}_scale".format(normalization[k]),
-            #     name="{}_scale".format(from_name))
+            from_layer = mx.symbol.L2Normalization(data=from_layer, mode="channel", name="{}_norm".format(from_name))
             scale = mx.symbol.Variable(name="{}_scale".format(from_name),shape=(1, num_channels.pop(0), 1, 1))
-            # scale = mx.symbol.Reshape(data=scale, shape=(1, 512, 1, 1))
             from_layer = normalization[k] * mx.symbol.broadcast_mul(lhs=scale, rhs=from_layer)
         if interm_layer > 0:
             from_layer = mx.symbol.Convolution(data=from_layer, kernel=(3,3), stride=(1,1), pad=(1,1), num_filter=interm_layer, name="{}_inter_conv".format(from_name))
@@ -157,7 +150,7 @@ def multibox_layer(from_layers, num_classes, sizes=[.2, .95], ratios=[1], normal
         cls_pred_layers.append(cls_pred)
 
         # create anchor generation layer
-        anchors = mx.symbol.MultiBoxPrior(from_layer, sizes=size_str, ratios=ratio_str, clip=clip, name="{}_anchors".format(from_name))
+        anchors = mx.contrib.symbol.MultiBoxPrior(from_layer, sizes=size_str, ratios=ratio_str, clip=clip, name="{}_anchors".format(from_name))
         anchors = mx.symbol.Flatten(data=anchors)
         anchor_layers.append(anchors)
 
