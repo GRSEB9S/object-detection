@@ -19,12 +19,12 @@
 ![alt tag](https://github.com/osin-vladimir/ms-thesis-skoltech/blob/master/notebooks/img/smooth%20l1%20loss.png)
 
 #### Table 1. Performance results 
-| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K | Raspberry PI 3 | Model Size (MB)|
-| ------------- | :----------: | :-------------------: | :---------: | :--:  |
-| CaffeNet      | 102          |      0.39             |    2.6      | 26.1  |
-| SqueezeNet    | 138          |      0.19             |    1.7      | 17.8  |
-| Resnet-18     | 79           |      0.71             |    7.3      | 58.6  |
-| VGG16_reduced | 45           |      3.2              |    55.6     | 104.3 |
+| Base Network  | GPU Titan X (FPS)  | CPU I7-5820K | Raspberry PI 3 | Model Size (MB)| Total params|
+| ------------- | :----------: | :-------------------: | :---------: | :--:  | :---: |
+| CaffeNet      | 102          |      0.39             |    2.6      | 26.1  | 3737  |
+| SqueezeNet    | 138          |      0.19             |    1.7      | 17.8  | 5080  |
+| Resnet-18     | 79           |      0.71             |    7.3      | 58.6  | 7225  |
+| VGG16_reduced | 45           |      3.2              |    55.6     | 104.3 | 8633  |
 
 *demo video with fps test of resnet-18 [here](https://www.youtube.com/watch?v=QvC_bejEtzY) 
 
