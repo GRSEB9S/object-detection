@@ -49,7 +49,6 @@ Links: [pascal](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html),
 ### References 
 1. [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)
 2. [Multispectral Pedestrian Detection: Benchmark Dataset and Baseline](https://goo.gl/ZF9v6r)
-3. [Pedestrian Detection:An Evaluation of the State of the Art](https://goo.gl/oMjBFq)
 
 ------
 ### Github repositories
