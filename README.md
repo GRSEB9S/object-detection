@@ -43,7 +43,7 @@
 For Single Shot Multibox Detector training/testing procedures I used PASCAL VOC 07/12 datasets.
 For training/testing procedures of multispectral model I used reasonable subset of KAIST Multispectral Dataset.
 
-Links: [pascal](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html), [kaist] https://sites.google.com/site/pedestrianbenchmark/)
+Links: [pascal](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html), [kaist] (https://sites.google.com/site/pedestrianbenchmark/)
 
 ------
 ### References 
