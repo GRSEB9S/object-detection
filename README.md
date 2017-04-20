@@ -1,9 +1,28 @@
-## Fast Multispectral Deep Fusion Networks for Human Detection
-------
+## Fast Multispectral Deep Fusion Neural Networks
+
 
 ### Table of Contents
-1. [Detection](#detection)
+1. [Installation](#installation)
+2. [Detection](#detection)
 2. [References](#references)
+
+------
+
+### Installation 
+
+- download mxnet src from [here]()
+- install mxnet for python with all required dependencies
+
+```
+cd ~/mxnet/setup-utils
+bash install-mxnet-ubuntu-python.sh
+```
+
+- create symbolic link to the data folder for your dataset
+
+```
+ln -s /path/to/pascal /path/to/ssd/data/pascal
+```
 
 ------
 
@@ -40,10 +59,14 @@
 
 ------
 #### Datasets
-For Single Shot Multibox Detector training/testing procedures I used PASCAL VOC 07/12 datasets.
-For training/testing procedures of multispectral model I used reasonable subset of KAIST Multispectral Dataset.
+Single Shot Multibox Detector train/test:
 
-Links: [pascal](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html), [kaist](https://sites.google.com/site/pedestrianbenchmark/)
+- PASCAL VOC 07/12 Dataset [link](http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/index.html)
+
+Multispectral Detectors (reasonable subsets of the following datasets):
+
+- KAIST Multispectral Dataset [link](https://sites.google.com/site/pedestrianbenchmark/)
+- CVC-14: Visible-FIR Day-Night Pedestrian Sequence Dataset [link](http://adas.cvc.uab.es/elektra/enigma-portfolio/cvc-14-visible-fir-day-night-pedestrian-sequence-dataset/)
 
 ------
 ### References 
