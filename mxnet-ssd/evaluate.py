@@ -8,7 +8,7 @@ from evaluate.evaluate_net import evaluate_net
 def get_args():
     parser = argparse.ArgumentParser(description='Evaluate a network')
 
-    parser.add_argument('--dataset', dest='dataset', help='which dataset to use', default='pascal', choices=['pascal', 'custom'], type=str)
+    parser.add_argument('--dataset', dest='dataset', help='which dataset to use', default='pascal', choices=['pascal', 'custom', 'kaist'], type=str)
     parser.add_argument('--year', dest='year', help='can be 2007, 2010, 2012', default='2007', type=str)
     parser.add_argument('--eval-set', dest='eval_set', type=str, default='test', help='evaluation set')
     parser.add_argument('--dataset-path', dest='dataset_path', help='path to dataset', default=os.path.join(os.getcwd(), 'data'), type=str)
