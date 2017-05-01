@@ -32,9 +32,7 @@ def caffenet():
     # group 5
     conv5 = mx.symbol.Convolution(data=relu4, kernel=(3, 3), pad=(1, 1), num_filter=256, name="conv5", num_group=2) # 17X17
     relu5 = mx.symbol.Activation(data=conv5, act_type="relu", name="relu5")
-    pool5 = mx.symbol.Pooling(data=relu5, pool_type="max", kernel=(3, 3), stride=(2, 2), name="pool5") # 8x8
-
-    return [relu5, pool5, pool5]
+    return [relu2, relu5, relu5]
 
 
 

@@ -29,7 +29,7 @@ class Custom(Imdb):
         self.extension = '.npy'
         self.is_train = is_train
         self.classes = ['person']
-        self.num_classes = len(self.classes)
+        self.num_classes = 1
         self.image_set_index = self._load_image_set_index(shuffle)
         self.num_images = len(self.image_set_index)
         if self.is_train:

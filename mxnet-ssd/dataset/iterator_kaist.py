@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 from tools.rand_sampler import RandSampler
 
-class DetIterSpectral(mx.io.DataIter):
+class DetIterKAIST(mx.io.DataIter):
     """
     Detection Iterator, which will feed data and label to network
     Optional data augmentation is performed when providing batch
@@ -48,7 +48,7 @@ class DetIterSpectral(mx.io.DataIter):
                  rand_seed=None,
                  is_train=True,
                  max_crop_trial=50):
-        super(DetIterSpectral, self).__init__()
+        super(DetIterKAIST, self).__init__()
 
         self._imdb = imdb
         self.batch_size = batch_size
@@ -135,11 +135,19 @@ class DetIterSpectral(mx.io.DataIter):
             else:
                 index = self._index[self._current + i]
 
+
             im_path = self._imdb.image_path_from_index(index)
 
-            img = np.load(im_path)
-            img_rgb = mx.nd.array(img[:,:,:3])
-            img_tir = mx.nd.expand_dims(mx.nd.array(img[:,:,3]), axis=2)
+            with open('/home/home/PycharmProjects/thesis-ssd/mxnet-ssd/data/kaist/images_rgb/' + im_path.split('/')[-1][:-4] + '.jpg', 'rb') as fp:
+                img_content = fp.read()
+            img_rgb = mx.img.imdecode(img_content)
+
+            with open('/home/home/PycharmProjects/thesis-ssd/mxnet-ssd/data/kaist/images_tir/' + im_path.split('/')[-1][:-4] + '.jpg', 'rb') as fp:
+                img_content = fp.read()
+            img_tir = mx.img.imdecode(img_content, to_rgb=0, flag=0)
+            # img = np.load(im_path)
+            # img_rgb = mx.nd.array(img[:,:,:3])
+            # img_tir = mx.nd.expand_dims(mx.nd.array(img[:,:,3]), axis=2)
             gt = self._imdb.label_from_index(index).copy() if self.is_train else None
             rgb, tir, label = self._data_augmentation(img_rgb, img_tir, gt)
             batch_data_rgb[i] = rgb
@@ -190,7 +198,7 @@ class DetIterSpectral(mx.io.DataIter):
                     rgb = mx.nd.array(np_data)
 
                     data_bak = tir
-                    tir = mx.nd.full((new_height, new_width, 1), 44, dtype='uint8')
+                    tir = mx.nd.full((new_height, new_width, 1), 128, dtype='uint8')
                     np_data = tir.asnumpy()
                     np_data[offset_y:offset_y+height, offset_x:offset_x + width, :] = data_bak.asnumpy()
                     tir = mx.nd.array(np_data)
@@ -205,7 +213,7 @@ class DetIterSpectral(mx.io.DataIter):
         interp_method = interp_methods[int(np.random.uniform(0, 1) * len(interp_methods))]
         rgb = mx.img.imresize(rgb, self._data_shape[1], self._data_shape[0], interp_method)
         tir = mx.img.imresize(tir, self._data_shape[1], self._data_shape[0], interp_method)
-        #
+
         if self.is_train and self._rand_mirror:
             if np.random.uniform(0, 1) > 0.5:
                 rgb = mx.nd.flip(rgb, axis=1)
@@ -217,10 +225,10 @@ class DetIterSpectral(mx.io.DataIter):
 
         rgb = mx.nd.transpose(rgb, (2,0,1))
         rgb = rgb.astype('float32')
-        rgb = (rgb - self._mean_rgb_pixels)/self._std_rgb_pixels
+        rgb = rgb - self._mean_rgb_pixels
 
         tir = mx.nd.transpose(tir, (2,0,1))
         tir = tir.astype('float32')
-        tir = (tir - self._mean_tir_pixel)/self._std_tir_pixel
+        tir = tir - self._mean_tir_pixel
 
         return rgb, tir, label

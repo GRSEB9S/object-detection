@@ -23,23 +23,27 @@ def get_symbol_train(num_classes=20, network='caffenet'):
 
     label = mx.symbol.Variable(name="label")
 
-    networks = {'caffenet': caffenet(), 'squeezenet': squeezenet(), 'resnet': resnet()}
+    if network != 'spectral':
+        networks = {'caffenet': caffenet(), 'squeezenet': squeezenet(), 'resnet': resnet()}
 
-    input_1, input_2, input_3 = networks[network]
+        input_1, input_2, input_3 = networks[network]
 
-    # ssd extra layers
-    conv8_1, elu8_1 = bn_act_conv_layer(input_3, "8_1", 256, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
-    conv8_2, elu8_2 = bn_act_conv_layer(conv8_1, "8_2", 512, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
-    conv9_1, elu9_1 = bn_act_conv_layer(conv8_2, "9_1", 128, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
-    conv9_2, elu9_2 = bn_act_conv_layer(conv9_1, "9_2", 256, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
-    conv10_1, elu10_1 = bn_act_conv_layer(conv9_2, "10_1", 128, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
-    conv10_2, elu10_2 = bn_act_conv_layer(conv10_1, "10_2", 256, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
+        # ssd extra layers
+        conv8_1, elu8_1 = bn_act_conv_layer(input_3, "8_1", 256, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
+        conv8_2, elu8_2 = bn_act_conv_layer(conv8_1, "8_2", 512, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
+        conv9_1, elu9_1 = bn_act_conv_layer(conv8_2, "9_1", 128, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
+        conv9_2, elu9_2 = bn_act_conv_layer(conv9_1, "9_2", 256, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
+        conv10_1, elu10_1 = bn_act_conv_layer(conv9_2, "10_1", 128, kernel=(1, 1), pad=(0, 0), stride=(1, 1))
+        conv10_2, elu10_2 = bn_act_conv_layer(conv10_1, "10_2", 256, kernel=(3, 3), pad=(1, 1), stride=(2, 2))
 
-    # global Pooling
-    pool10 = mx.symbol.Pooling(data=conv10_2, pool_type="avg", global_pool=True, kernel=(1, 1), name='pool10')
+        # global Pooling
+        pool10 = mx.symbol.Pooling(data=conv10_2, pool_type="avg", global_pool=True, kernel=(1, 1), name='pool10')
 
-    # with feature maps: ssd_input
-    from_layers = [input_1, input_2, conv8_2, conv9_2, conv10_2, pool10]
+        # with feature maps: ssd_input
+        from_layers = [input_1, input_2, conv8_2, conv9_2, conv10_2, pool10]
+
+    else:
+        from_layers = fusion_net()
 
     sizes = [[.1], [.2, .276], [.38, .461], [.56, .644], [.74, .825], [.92, 1.01]]
     ratios = [[1, 2, .5],
@@ -50,9 +54,6 @@ def get_symbol_train(num_classes=20, network='caffenet'):
               [1, 2, .5, 3, 1. / 3]]
 
     normalizations = [20, -1, -1, -1, -1, -1]
-
-    if network == 'spectral':
-        from_layers = fusion_net()
 
     if network in ['resnet', 'spectral']:
         num_channels = [128]
@@ -66,7 +67,8 @@ def get_symbol_train(num_classes=20, network='caffenet'):
         normalizations = normalizations[2:]
         num_channels = []
 
-    loc_preds, cls_preds, anchor_boxes = multibox_layer(from_layers, num_classes,
+    loc_preds, cls_preds, anchor_boxes = multibox_layer(from_layers,
+                                                        num_classes,
                                                         sizes=sizes,
                                                         ratios=ratios,
                                                         normalization=normalizations,
@@ -104,7 +106,7 @@ def get_symbol_train(num_classes=20, network='caffenet'):
                                   normalization='valid',
                                   name="loc_loss")
 
-    # confidence loss
+    # monitoring training status
     cls_label = mx.symbol.MakeLoss(data=cls_target, grad_scale=0, name="cls_label")
 
     # group output
@@ -131,12 +133,10 @@ def get_symbol(num_classes=20, nms_thresh=0.5, force_suppress=True, network='caf
     loc_preds = net.get_internals()["multibox_loc_pred_output"]
     anchor_boxes = net.get_internals()["multibox_anchors_output"]
 
-    cls_prob = mx.symbol.SoftmaxActivation(data=cls_preds,
-                                           mode='channel',
-                                           name='cls_prob')
-
+    cls_prob = mx.symbol.SoftmaxActivation(data=cls_preds, mode='channel', name='cls_prob')
     out = mx.contrib.symbol.MultiBoxDetection(*[cls_prob, loc_preds, anchor_boxes],
                                               name="detection",
                                               nms_threshold=nms_thresh,
-                                              force_suppress=force_suppress, variances=(0.1, 0.1, 0.2, 0.2))
+                                              force_suppress=force_suppress,
+                                              variances=(0.1, 0.1, 0.2, 0.2))
     return out

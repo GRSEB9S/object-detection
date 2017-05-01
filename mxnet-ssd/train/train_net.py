@@ -10,6 +10,7 @@ from dataset.concat_db import ConcatDB
 from dataset.custom import Custom
 from config.config import cfg
 from metric import MultiBoxMetric
+from evaluate.eval_metric import MApMetric, VOC07MApMetric
 from initializer import ScaleInitializer
 
 def load_pascal(image_set, year, devkit_path, shuffle=False):
@@ -55,13 +56,6 @@ def load_pascal(image_set, year, devkit_path, shuffle=False):
 def load_dataset(image_set, dataset_path, dataset_name = 'kaist', shuffle=False, mode='rgb'):
     imdbs = []
 
-    if dataset_name == 'kaist':
-        imdbs.append(Kaist(image_set, dataset_path, shuffle, is_train=True, mode=mode))
-        print len(imdbs)
-        if len(imdbs) > 1:
-            return ConcatDB(imdbs, shuffle)
-        else:
-            return imdbs[0]
 
     if dataset_name == 'custom':
         imdbs.append(Custom(image_set, dataset_path, shuffle, is_train=True))
@@ -254,6 +248,7 @@ def train_net(network_name,
 
     # ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     # define layers with fixed weight/bias
+    fixed_param_names=[]
     if network_name =='vgg16_reduced':
         fixed_param_names = [name for name in net.list_arguments() if name.startswith('conv1_') or name.startswith('conv2_')]
 
@@ -311,11 +306,12 @@ def train_net(network_name,
     optimizer_params={'learning_rate':learning_rate,
                       'wd':weight_decay,
                       'lr_scheduler':lr_scheduler,
+                      # 'momentum': momentum,
                       'clip_gradient':None,
                       'rescale_grad': 1.0}
 
-    monitor = mx.mon.Monitor(iter_monitor, pattern=".*") if iter_monitor > 0 else None
 
+    monitor = mx.mon.Monitor(iter_monitor, pattern=".*") if iter_monitor > 0 else None
     mod.fit(train_iter,
             eval_data=val_iter,
             eval_metric=MultiBoxMetric(),

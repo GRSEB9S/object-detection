@@ -40,13 +40,9 @@ def resnet():
     net = residual_unit(net, filter_list[4], (2, 2), False, name='stage4_unit1', workspace=workspace)
     net = residual_unit(net, filter_list[4], (1, 1), True, name='stage4_unit2', workspace=workspace)
 
-    bn1 = mx.sym.BatchNorm(data=net, fix_gamma=False, eps=2e-5, momentum=bn_mom, name='bn1')
-    relu1 = mx.symbol.Activation(data=bn1, act_type='relu', name='relu1')
-
-    input_3 = relu1 # 10x10
-    internals = input_3.get_internals()
+    internals = net.get_internals()
     input_1 = internals['stage3_unit1_relu1_output']  # 38x38
     input_2 = internals['stage4_unit1_relu1_output']  # 19X19
 
-    return [input_1, input_2, input_3]
+    return [input_1, input_2, input_2]
 
